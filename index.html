@@ -1,1 +1,69 @@
-Hello World
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>График курса Solana (SOL) по отношению к токену</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>График курса Solana (SOL) по отношению к токену</h1>
+    
+    <canvas id="myChart" width="400" height="200"></canvas>
+
+    <script>
+        // Функция для получения данных из API CoinGecko
+        async function getCoinData(coinId) {
+            try {
+                const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=sol`);
+                if (!response.ok) throw new Error('Ошибка при получении данных');
+                return await response.json();
+            } catch (error) {
+                console.error('Ошибка:', error);
+                return null;
+            }
+        }
+
+        // Функция для отрисовки графика
+        async function drawChart() {
+            const coinId = 'solana'; // ID токена Solana на CoinGecko
+            const data = await getCoinData(coinId);
+
+            if (!data) return;
+
+            const ctx = document.getElementById('myChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Object.keys(data),
+                    datasets: [{
+                        label: `SOL/${coinId}`,
+                        data: Object.values(data),
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Дата'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Курс в SOL'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Запуск отрисовки графика при загрузке страницы
+        drawChart();
+    </script>
+</body>
+</html>
