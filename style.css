@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #100138;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#tokenTable {
+    width: 100%;
+    border-collapse: separate;
+    background-color: #4304a2;
+    border-radius: 10px;
+    overflow-x: auto;
+}
+
+th, td {
+    text-align: left;
+    padding: 12px;
+}
+
+th {
+    background-color: #140754;
+    color: white;
+    font-weight: bold;
+}
+
+td {
+    color: rgb(0, 213, 255);
+}
+
+tr:nth-child(odd) > td {
+    background-color: #171348;
+}
+
+tr:nth-child(even) > td {
+    background-color: #18126d;
+}
+
+.token-logo {
+    min-width: 24px;
+    min-height: 24px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: scale-down;
+    object-position: center;
+}
+
+.row-container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+  }
+
+.row-container div {
+    box-sizing: border-box;
+    padding-left: 10px;
+}
