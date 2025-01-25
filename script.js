@@ -6,8 +6,6 @@ const loader = document.createElement('div');
 loader.style.cssText = `
     width: 100%;
     height: 50px;
-    background-color: #3498db;
-    color: white;
     text-align: center;
     line-height: 50px;
     font-size: 18px;
