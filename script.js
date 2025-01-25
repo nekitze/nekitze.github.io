@@ -50,6 +50,10 @@ function handleScroll() {
     }
 }
 
+window.onload = function() {
+    document.documentElement.style.cssText = '';
+};
+
 window.addEventListener('scroll', handleScroll);
 
 loadMoreTokens();
